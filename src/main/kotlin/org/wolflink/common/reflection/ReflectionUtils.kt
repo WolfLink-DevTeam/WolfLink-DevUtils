@@ -61,7 +61,7 @@ object ReflectionUtils {
 }
 fun Field.setValue(obj : Any, valueString : String)
 {
-    println("正在为 ${this.name} 设置值，字符串：$valueString")
+//    println("正在为 ${this.name} 设置值，字符串：$valueString")
     when(this.type)
     {
         String::class.java->{
@@ -92,5 +92,5 @@ fun Field.setValue(obj : Any, valueString : String)
             this.set(obj,valueString.toLong())
         }
     }
-    println("${this.name} 值更新为：${this.get(obj)}")
+//    println("${this.name} 值更新为：${this.get(obj)}")
 }
