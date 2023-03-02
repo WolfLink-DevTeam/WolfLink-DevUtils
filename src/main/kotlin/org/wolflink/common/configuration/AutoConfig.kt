@@ -13,9 +13,9 @@ import java.io.File
 import java.lang.reflect.Field
 
 open class AutoConfig(configName : String, configPath : String = getRunPath()) {
-    val configFile = File(configPath,"$configName.wolf")
+    private val configFile = File(configPath,"$configName.wolf")
 
-    fun toPrettyJsonString() : String
+    private fun toPrettyJsonString() : String
     {
         val headComment = this::class.java.getAnnotation(HeadComment::class.java)?.comment ?: ""
         val root = JsonObject()

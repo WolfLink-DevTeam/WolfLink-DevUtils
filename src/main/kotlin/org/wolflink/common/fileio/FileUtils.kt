@@ -8,7 +8,7 @@ import com.google.gson.JsonParser
 import org.wolflink.common.gson.toPrettyFormat
 import java.io.File
 
-// 获取当前运行路径
+// 获取当前运行路径(在动态加载的环境下此值为主动加载方Jar的路径，而不是调用该方法的Jar的路径
 fun getRunPath() : String = System.getProperties().getProperty("user.dir")
 // 创建父文件夹并创建文件
 fun File.save()
