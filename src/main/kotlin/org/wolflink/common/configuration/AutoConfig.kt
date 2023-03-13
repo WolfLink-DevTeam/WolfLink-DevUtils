@@ -60,7 +60,7 @@ open class AutoConfig(configName : String, configPath : String = getRunPath()) {
         return root.toPrettyFormat()
     }
 
-    fun load()
+    open fun load()
     {
         if(!configFile.exists())save()
         val jsonObject = configFile.loadAsJsonObject()
@@ -82,7 +82,7 @@ open class AutoConfig(configName : String, configPath : String = getRunPath()) {
             }
         }
     }
-    fun save()
+    open fun save()
     {
         if(!configFile.exists())configFile.save()
         configFile.writeText(toPrettyJsonString())
