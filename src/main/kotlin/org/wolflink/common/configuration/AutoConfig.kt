@@ -12,6 +12,17 @@ import org.wolflink.common.string.decodeStringList
 import java.io.File
 import java.lang.reflect.Field
 
+/**
+ * 声明式自动化配置文件，请继承该类
+ * 使用 @HeadComment 注解为配置文件添加头部注释
+ * 使用 @ConfigNode 声明配置项 ( 类型不能为 final 或者 val )
+ * 集合类型必须可变
+ * 最终配置文件会被保存为 PrettyJson 格式
+ * 需要自行调用 load() 和 save() 方法完成配置文件的加载和保存工作
+ *
+ * @param configName 配置文件名称
+ * @param configPath 配置文件所处目录的路径，默认为Jar运行路径
+ */
 open class AutoConfig(configName : String, configPath : String = getRunPath()) {
     private val configFile = File(configPath,"$configName.wolf")
 
@@ -51,7 +62,7 @@ open class AutoConfig(configName : String, configPath : String = getRunPath()) {
 
     fun load()
     {
-        if(!configFile.exists())configFile.save()
+        if(!configFile.exists())save()
         val jsonObject = configFile.loadAsJsonObject()
         for (field in this::class.java.declaredFields)
         {
